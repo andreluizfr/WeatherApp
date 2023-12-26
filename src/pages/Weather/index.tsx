@@ -65,6 +65,10 @@ export default function WeatherPage(): JSX.Element {
             setSunrise(getSunrise(getCurrentWeatherResult.data));
             setSunset(getSunset(getCurrentWeatherResult.data));
         }
+        if(getCurrentWeatherResult.isError && getCurrentWeatherResult.error)
+            console.error(getCurrentWeatherResult.error);
+        if(getHourlyWeatherResult.isError && getHourlyWeatherResult.error) 
+            console.error(getHourlyWeatherResult.error);
     }, [getCurrentWeatherResult, getHourlyWeatherResult, weather]);
 
     if(getCurrentWeatherResult.isLoading || getHourlyWeatherResult.isLoading) return <LoadingPage/>
