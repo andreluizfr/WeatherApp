@@ -37,4 +37,4 @@ In the root folder run the commands:
 
 ## Deployed application
 then access:
-**[]()**
+**[weather-app-andreluizfr.netlify.app](weather-app-andreluizfr.netlify.app)**
