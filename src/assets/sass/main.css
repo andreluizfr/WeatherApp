@@ -1,0 +1,47 @@
+@font-face {
+  font-display: fallback;
+  font-family: Limerick Serial;
+  font-weight: 200;
+  src: url(../fonts/Limerick-Serial-Extra-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: Limerick Serial;
+  font-weight: 300;
+  src: url(../fonts/Limerick-Serial-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: Limerick Serial;
+  font-weight: 400;
+  src: url(../fonts/Limerick-Serial-Regular.ttf) format("truetype");
+}
+:root {
+  font-family: Limerick Serial;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #242424;
+}
+
+* {
+  inset: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}/*# sourceMappingURL=main.css.map */

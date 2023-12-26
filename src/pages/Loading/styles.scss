@@ -1,0 +1,11 @@
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
+
+.LoadingPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #151515;
+}

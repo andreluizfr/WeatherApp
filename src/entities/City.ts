@@ -1,0 +1,1 @@
+export type City = "fairbanks" | "london" | "recife" | "vancouver" | "yakutsk" | "dallol";

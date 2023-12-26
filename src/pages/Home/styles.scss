@@ -1,0 +1,79 @@
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
+
+.HomePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-width: 320px;
+    overflow: hidden;
+    min-height: 100vh;
+    background-color: #151515;
+
+    > .HomePage-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        width: 100%;
+        max-width: 460px;
+
+        & > .Title-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.2;
+
+            & > .Title{
+                font-size: 36px;
+                font-weight: 300;
+                letter-spacing: 5px;
+                color: #FFFFFF;
+            }
+
+            & > .Subtitle{
+                font-size: 30px;
+                font-weight: 200;
+                letter-spacing: 1.2px;
+                color: rgba(255,255,255,0.7);
+            }
+        }
+
+        & > .Logo {
+            width: 128px;
+            height: auto;
+            filter: invert(1);
+            margin-bottom: 24px;
+        }
+
+        & > .Cities-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            row-gap: 48px;
+            margin-bottom: 84px;
+            width: 100%;
+
+            & > .City{
+                width: 33%;
+                text-align: center;
+                font-size: 22px;
+                font-weight: 200;
+                letter-spacing: 1.5px;
+                color: #FFFFFF;
+
+                &:hover{
+                    text-decoration: solid underline #FFFFFF 1px;  
+                    text-underline-position: under;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,262 @@
+.WeatherPage[weather=sunny] {
+  background: linear-gradient(rgb(87, 203, 220), rgb(59, 161, 181));
+}
+
+.WeatherPage[weather=rainy] {
+  background: linear-gradient(rgb(97, 105, 120), rgb(60, 67, 83));
+}
+
+.WeatherPage[weather=cloudy-day], .WeatherPage[weather=cloudy-night] {
+  background: linear-gradient(rgb(69, 79, 97), rgb(49, 60, 87));
+}
+
+.WeatherPage[weather=sunny] .Icon, .WeatherPage[weather=rainy] .Icon, .WeatherPage[weather=cloudy-day] .Icon, .WeatherPage[weather=cloudy-night] .Icon, .WeatherPage .Icon {
+  color: #ffffff;
+}
+.WeatherPage[weather=sunny] .Icon:hover, .WeatherPage[weather=rainy] .Icon:hover, .WeatherPage[weather=cloudy-day] .Icon:hover, .WeatherPage[weather=cloudy-night] .Icon:hover, .WeatherPage .Icon:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+.WeatherPage[weather=sunny] .Icon-bright, .WeatherPage[weather=rainy] .Icon-bright, .WeatherPage[weather=cloudy-day] .Icon-bright, .WeatherPage[weather=cloudy-night] .Icon-bright, .WeatherPage .Icon-bright {
+  color: rgba(255, 255, 255, 0.8);
+}
+.WeatherPage[weather=sunny] .Icon-brighter, .WeatherPage[weather=rainy] .Icon-brighter, .WeatherPage[weather=cloudy-day] .Icon-brighter, .WeatherPage[weather=cloudy-night] .Icon-brighter, .WeatherPage .Icon-brighter {
+  color: rgba(255, 255, 255, 0.5);
+}
+.WeatherPage[weather=sunny] .Text, .WeatherPage[weather=rainy] .Text, .WeatherPage[weather=cloudy-day] .Text, .WeatherPage[weather=cloudy-night] .Text, .WeatherPage .Text {
+  color: #ffffff;
+}
+.WeatherPage[weather=sunny] .Text-bright, .WeatherPage[weather=rainy] .Text-bright, .WeatherPage[weather=cloudy-day] .Text-bright, .WeatherPage[weather=cloudy-night] .Text-bright, .WeatherPage .Text-bright {
+  color: rgba(255, 255, 255, 0.8);
+}
+.WeatherPage[weather=sunny] .Text-brighter, .WeatherPage[weather=rainy] .Text-brighter, .WeatherPage[weather=cloudy-day] .Text-brighter, .WeatherPage[weather=cloudy-night] .Text-brighter, .WeatherPage .Text-brighter {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.WeatherPage[weather=snowy] {
+  background: linear-gradient(rgb(224, 224, 224), rgb(165, 165, 165));
+}
+.WeatherPage[weather=snowy] .Icon {
+  color: #000000;
+}
+.WeatherPage[weather=snowy] .Icon:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+.WeatherPage[weather=snowy] .Icon-bright {
+  color: rgba(0, 0, 0, 0.8);
+}
+.WeatherPage[weather=snowy] .Icon-brighter {
+  color: rgba(0, 0, 0, 0.5);
+}
+.WeatherPage[weather=snowy] .Text {
+  color: #000000;
+}
+.WeatherPage[weather=snowy] .Text-bright {
+  color: rgba(0, 0, 0, 0.8);
+}
+.WeatherPage[weather=snowy] .Text-brighter {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.WeatherPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-width: 240px;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 24px;
+}
+.WeatherPage > .Back-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.WeatherPage > .Back-bar > .Rounded {
+  border-radius: 50%;
+  padding: 4px;
+}
+.WeatherPage > .Back-bar > .Rounded:hover {
+  cursor: pointer;
+  transition: background-color 300ms;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.WeatherPage > .Back-bar > .Rounded > .Back-icon {
+  width: 32px;
+  height: auto;
+}
+.WeatherPage > .Back-bar > .Rounded > .Back-icon:hover {
+  transition: color 300ms;
+}
+.WeatherPage > .Weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 8px;
+  width: 100%;
+  max-width: 420px;
+}
+.WeatherPage > .Weather-container > .Title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 1;
+}
+.WeatherPage > .Weather-container > .Title-wrapper .Title {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 4px;
+}
+.WeatherPage > .Weather-container > .Title-wrapper .Subtitle {
+  font-size: 28px;
+  font-weight: 200;
+}
+.WeatherPage > .Weather-container > .Today-temperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature {
+  font-size: 106px;
+  font-weight: 300;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature ::first-letter {
+  letter-spacing: 6px;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 84px;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement > .Measure {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  position: relative;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement > .Measure i {
+  position: absolute;
+  left: -8px;
+  font-size: 14px;
+  height: 100%;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement > .Max-min-temperature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement > .Max-min-temperature > .Temperature-plus-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement > .Max-min-temperature > .Temperature-plus-arrow .Arrow {
+  height: 18px;
+  width: auto;
+}
+.WeatherPage > .Weather-container > .Today-temperature > .Temperature-complement > .Max-min-temperature > .Temperature-plus-arrow .Temperature {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+}
+.WeatherPage > .Weather-container > .Weather-icon {
+  width: 106px;
+  height: auto;
+}
+.WeatherPage > .Weather-container > .Previsions {
+  margin: 48px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 220px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media only screen and (max-width: 340px) {
+  .WeatherPage > .Weather-container > .Previsions {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period .Title {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period .Weather-icon {
+  width: 36px;
+  height: auto;
+  margin-bottom: 8px;
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period .Temperature {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period .Temperature i {
+  position: absolute;
+  left: -8px;
+  font-size: 14px;
+  height: 100%;
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period .Measure {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  position: relative;
+  margin-left: 8px;
+}
+.WeatherPage > .Weather-container > .Previsions .Day-period .Measure i {
+  position: absolute;
+  left: -8px;
+  font-size: 11px;
+  height: 100%;
+}
+.WeatherPage > .Weather-container > .More-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 220px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media only screen and (max-width: 340px) {
+  .WeatherPage > .Weather-container > .More-infos {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.WeatherPage > .Weather-container > .More-infos > .Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.WeatherPage > .Weather-container > .More-infos > .Wrapper .Title {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+.WeatherPage > .Weather-container > .More-infos > .Wrapper .Value {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}/*# sourceMappingURL=styles.css.map */

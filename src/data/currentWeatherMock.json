@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": 40.29,
+        "lat": 14.23
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 302.82,
+        "feels_like": 304.83,
+        "temp_min": 302.82,
+        "temp_max": 302.82,
+        "pressure": 1015,
+        "humidity": 57,
+        "sea_level": 1015,
+        "grnd_level": 1029
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.42,
+        "deg": 353,
+        "gust": 2.48
+    },
+    "clouds": {
+        "all": 6
+    },
+    "dt": 1703569765,
+    "sys": {
+        "country": "ET",
+        "sunrise": 1703562029,
+        "sunset": 1703602658
+    },
+    "timezone": 10800,
+    "id": 345149,
+    "name": "Ādīgrat",
+    "cod": 200
+}

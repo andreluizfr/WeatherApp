@@ -1,0 +1,68 @@
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 320px;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: #151515;
+}
+.HomePage > .HomePage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 460px;
+}
+.HomePage > .HomePage-container > .Title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2;
+}
+.HomePage > .HomePage-container > .Title-wrapper > .Title {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  color: #FFFFFF;
+}
+.HomePage > .HomePage-container > .Title-wrapper > .Subtitle {
+  font-size: 30px;
+  font-weight: 200;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.HomePage > .HomePage-container > .Logo {
+  width: 128px;
+  height: auto;
+  filter: invert(1);
+  margin-bottom: 24px;
+}
+.HomePage > .HomePage-container > .Cities-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 48px;
+  margin-bottom: 84px;
+  width: 100%;
+}
+.HomePage > .HomePage-container > .Cities-wrapper > .City {
+  width: 33%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+  color: #FFFFFF;
+}
+.HomePage > .HomePage-container > .Cities-wrapper > .City:hover {
+  -webkit-text-decoration: solid underline #FFFFFF 1px;
+          text-decoration: solid underline #FFFFFF 1px;
+  text-underline-position: under;
+  cursor: pointer;
+}/*# sourceMappingURL=styles.css.map */

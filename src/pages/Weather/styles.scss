@@ -1,0 +1,305 @@
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
+
+.WeatherPage[weather="sunny"]{
+    background: linear-gradient(rgb(87, 203, 220), rgb(59, 161, 181));
+}
+
+.WeatherPage[weather="rainy"]{
+    background: linear-gradient(rgb(97, 105, 120), rgb(60, 67, 83));
+}
+
+.WeatherPage[weather="cloudy-day"], .WeatherPage[weather="cloudy-night"]{
+    background: linear-gradient(rgb(69, 79, 97), rgb(49, 60, 87));
+}
+
+.WeatherPage[weather="sunny"], .WeatherPage[weather="rainy"], .WeatherPage[weather="cloudy-day"], .WeatherPage[weather="cloudy-night"], .WeatherPage{
+    .Icon{
+        color: #ffffff;
+
+        &:hover{
+            color: rgba(255,255,255,0.8);
+        }
+    }
+    .Icon-bright{
+        color: rgba(255,255,255,0.8);
+    }
+    .Icon-brighter{
+        color: rgba(255,255,255,0.5);
+    }
+
+    .Text{
+        color: #ffffff;
+    }
+    .Text-bright{
+        color: rgba(255,255,255,0.8);
+    }
+    .Text-brighter{
+        color: rgba(255,255,255,0.5);
+    }
+}
+
+.WeatherPage[weather="snowy"]{
+    background: linear-gradient(rgb(224, 224, 224), rgb(165, 165, 165));
+
+    .Icon{
+        color: #000000;
+
+        &:hover{
+            color: rgba(0,0,0,0.8);
+        }
+    }
+    .Icon-bright{
+        color: rgba(0,0,0,0.8);
+    }
+    .Icon-brighter{
+        color: rgba(0,0,0,0.5);
+    }
+
+    .Text{
+        color: #000000;
+    }
+    .Text-bright{
+        color: rgba(0,0,0,0.8);
+    }
+    .Text-brighter{
+        color: rgba(0,0,0,0.5);
+    }
+}
+
+.WeatherPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    min-width: 240px;
+    overflow: hidden;
+    min-height: 100vh;
+    padding: 24px;
+
+    > .Back-bar{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        > .Rounded{
+            border-radius: 50%;
+            padding: 4px;
+
+            &:hover{
+                cursor: pointer;
+                transition: background-color 300ms;
+                background-color: rgba(0,0,0,0.08);
+            }
+
+            > .Back-icon{
+                width: 32px;
+                height: auto;
+    
+                &:hover{
+                    transition: color 300ms;
+                }
+            }
+        }
+        
+    }
+
+    > .Weather-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 48px 8px;
+        width: 100%;
+        max-width: 420px;
+
+        > .Title-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            line-height: 1;
+
+            .Title{
+                font-size: 34px;
+                font-weight: 300;
+                letter-spacing: 4px;
+            }
+
+            .Subtitle{
+                font-size: 28px;
+                font-weight: 200;
+            }
+        }
+
+        > .Today-temperature {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > .Temperature {
+                font-size: 106px;
+                font-weight: 300;
+
+                ::first-letter{
+                    letter-spacing: 6px;
+                }
+            }
+
+            > .Temperature-complement {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-end;
+                height: 84px;
+
+                > .Measure{
+                    font-size: 24px;
+                    font-weight: 400;
+                    letter-spacing: 4px;
+                    position: relative;
+
+                    i{
+                        position: absolute;
+                        left: -8px;
+                        font-size: 14px;
+                        height: 100%;
+                    }
+                }
+
+                > .Max-min-temperature{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    > .Temperature-plus-arrow{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .Arrow {
+                            height: 18px;
+                            width: auto;
+                        }
+
+                        .Temperature {
+                            font-size: 16px;
+                            font-weight: 200;
+                            letter-spacing: 1.5px;
+                        }
+                    }
+                }
+            }
+        }   
+
+        > .Weather-icon {
+            width: 106px;
+            height: auto;
+        }
+
+        > .Previsions {
+            margin: 48px 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            min-width: 220px;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            @include mq-very-small{
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .Day-period {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+
+                .Title{
+                    font-size: 16px;
+                    font-weight: 300;
+                    letter-spacing: 1px;
+                }
+
+                .Weather-icon{
+                    width: 36px;
+                    height: auto;
+                    margin-bottom: 8px;
+                }
+
+                .Temperature{
+                    font-size: 18px;
+                    font-weight: 300;
+                    letter-spacing: 1.5px;
+                    position: relative;
+
+                    i{
+                        position: absolute;
+                        left: -8px;
+                        font-size: 14px;
+                        height: 100%;
+                    }
+                }
+
+                .Measure{
+                    font-size: 18px;
+                    font-weight: 300;
+                    letter-spacing: 1.5px;
+                    position: relative;
+                    margin-left: 8px;
+
+                    i{
+                        position: absolute;
+                        left: -8px;
+                        font-size: 11px;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        > .More-infos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            min-width: 220px;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            @include mq-very-small{
+                justify-content: center;
+                gap: 16px;
+            }
+
+            > .Wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+
+                .Title{
+                    font-size: 16px;
+                    font-weight: 200;
+                    letter-spacing: 1px;
+                }
+
+                .Value{
+                    font-size: 14px;
+                    font-weight: 300;
+                    letter-spacing: 0.5px;
+                }
+            }
+        }   
+    }
+}
