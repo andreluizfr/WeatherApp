@@ -1,0 +1,37 @@
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
+
+.More-infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 220px;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    @include mq-very-small{
+        justify-content: center;
+        gap: 16px;
+    }
+
+    > .Wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        .Title{
+            font-size: 16px;
+            font-weight: 200;
+            letter-spacing: 1px;
+        }
+
+        .Value{
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+    }
+}   

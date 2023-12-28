@@ -1,0 +1,74 @@
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
+
+.Previsions {
+    margin: 48px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 220px;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    @include mq-very-small{
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .Day-period {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        .Title{
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .Subtitle{
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .Weather-icon{
+            width: 36px;
+            height: auto;
+            margin-bottom: 8px;
+        }
+
+        .Temperature{
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            position: relative;
+
+            i{
+                position: absolute;
+                left: -8px;
+                font-size: 14px;
+                height: 100%;
+            }
+        }
+
+        .Measure{
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            position: relative;
+            margin-left: 8px;
+
+            i{
+                position: absolute;
+                left: -8px;
+                font-size: 11px;
+                height: 100%;
+            }
+        }
+    }
+}

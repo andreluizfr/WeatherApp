@@ -1,0 +1,51 @@
+.Today-temperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Today-temperature > .Temperature {
+  font-size: 106px;
+  font-weight: 300;
+}
+.Today-temperature > .Temperature ::first-letter {
+  letter-spacing: 6px;
+}
+.Today-temperature > .Temperature-complement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 84px;
+}
+.Today-temperature > .Temperature-complement > .Measure {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  position: relative;
+}
+.Today-temperature > .Temperature-complement > .Measure i {
+  position: absolute;
+  left: -8px;
+  font-size: 14px;
+  height: 100%;
+}
+.Today-temperature > .Temperature-complement > .Max-min-temperature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Today-temperature > .Temperature-complement > .Max-min-temperature > .Temperature-plus-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Today-temperature > .Temperature-complement > .Max-min-temperature > .Temperature-plus-arrow .Arrow {
+  height: 18px;
+  width: auto;
+}
+.Today-temperature > .Temperature-complement > .Max-min-temperature > .Temperature-plus-arrow .Temperature {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+}/*# sourceMappingURL=styles.css.map */

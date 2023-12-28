@@ -1,0 +1,32 @@
+.More-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 220px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media only screen and (max-width: 340px) {
+  .More-infos {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.More-infos > .Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.More-infos > .Wrapper .Title {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+.More-infos > .Wrapper .Value {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,63 @@
+.Previsions {
+  margin: 48px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 220px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media only screen and (max-width: 340px) {
+  .Previsions {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.Previsions .Day-period {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.Previsions .Day-period .Title {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.Previsions .Day-period .Subtitle {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+.Previsions .Day-period .Weather-icon {
+  width: 36px;
+  height: auto;
+  margin-bottom: 8px;
+}
+.Previsions .Day-period .Temperature {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+.Previsions .Day-period .Temperature i {
+  position: absolute;
+  left: -8px;
+  font-size: 14px;
+  height: 100%;
+}
+.Previsions .Day-period .Measure {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  position: relative;
+  margin-left: 8px;
+}
+.Previsions .Day-period .Measure i {
+  position: absolute;
+  left: -8px;
+  font-size: 11px;
+  height: 100%;
+}/*# sourceMappingURL=styles.css.map */

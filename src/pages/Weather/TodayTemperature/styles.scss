@@ -1,0 +1,63 @@
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
+
+.Today-temperature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .Temperature {
+        font-size: 106px;
+        font-weight: 300;
+
+        ::first-letter{
+            letter-spacing: 6px;
+        }
+    }
+
+    > .Temperature-complement {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 84px;
+
+        > .Measure{
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            position: relative;
+
+            i{
+                position: absolute;
+                left: -8px;
+                font-size: 14px;
+                height: 100%;
+            }
+        }
+
+        > .Max-min-temperature{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            > .Temperature-plus-arrow{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .Arrow {
+                    height: 18px;
+                    width: auto;
+                }
+
+                .Temperature {
+                    font-size: 16px;
+                    font-weight: 200;
+                    letter-spacing: 1.5px;
+                }
+            }
+        }
+    }
+}   
