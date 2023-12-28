@@ -1,9 +1,9 @@
 import CurrentWeatherResponse from "@entities/CurrentWeatherResponse";
+import { getTimezonedDate } from "./getTimezonedDate";
 
 export default function getSunset(response: CurrentWeatherResponse) {
-    const localDate = new Date();
-    localDate.setTime((response.sys.sunset*1000) + (response.timezone*1000)); //acrescentar timezone da região
-    const utcDate = new Date(localDate.getTime() + (localDate.getTimezoneOffset() * 60000)); //acrescentar timezone -03:00 do brasil ou de qualquer outro sistema que irá rodar
+    const localDate = new Date(response.sys.sunrise*1000);
+    const utcDate = getTimezonedDate(localDate, response.timezone);
 
     const hours = utcDate.getHours();
     const minutes = ('0' + utcDate.getMinutes()).slice(-2);

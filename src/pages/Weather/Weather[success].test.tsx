@@ -1,22 +1,28 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WeatherPage from '.';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as currentWeatherMock from '../../data/currentWeatherMock.json';
-import * as hourlyWeatherMock from '../../data/hourlyWeatherMock.json';
+import * as currentWeatherMock from '@data/currentWeatherMock.json';
+import * as hourlyWeatherMock from '@data/hourlyWeatherMock.json';
+import WeatherPage from '.';
+import HourlyWeatherResponse from '@entities/HourlyWeatherResponse';
+import getCurrentWeatherService from '@services/GetCurrentWeather';
+import searchNextDayTemperature from '@utils/searchNextDayTemperature';
+import getSunrise from '@utils/getSunrise';
+import getSunset from '@utils/getSunset';
+import getWeatherType from '@utils/getWeatherType';
 
 jest.mock('@services/GetCurrentWeather', () => ({
     __esModule: true,
-    default: (_city: string) => {
+    default: jest.fn((_city: string) => {
       return {
         isLoading: false,
         loaded: true,
         data: currentWeatherMock,
         isError: false,
         error: null,
-      };
-    },
+      }
+    }),
 }));
 
 jest.mock('@services/GetHourlyWeather', () => ({
@@ -58,7 +64,6 @@ describe('WeatherPage', () => {
     });
 
     it('successful api request', async () => {
-
         //aplicando css no DOM
         const cssFile = fs.readFileSync(
             path.resolve(__dirname, './styles.css'),
@@ -69,6 +74,8 @@ describe('WeatherPage', () => {
         style.type = 'text/css'; 
         style.innerHTML = cssFile;
         container.append(style);
+
+        expect(getCurrentWeatherService).toHaveBeenCalled();
 
         //it must not have loader
         const loader = screen.queryByTestId('loader');
@@ -107,33 +114,39 @@ describe('WeatherPage', () => {
         const minCurrentTemperature = screen.getByTestId('min-current-temperature');
         expect(minCurrentTemperature).toHaveTextContent('30°');
         await waitFor(() => expect(minCurrentTemperature).toBeVisible(), { timeout: 2000 });
-        
 
         //test if icon of the current weather is the correct one
-        //const currentWeatherIcon = screen.getByTestId('current-weather-sunny');
-        //expect(currentWeatherIcon).toBeInTheDocument();
-        //await waitFor(() => expect(currentWeatherIcon).toBeVisible(), { timeout: 2000 });
+        const sunriseString = getSunrise(currentWeatherMock);
+        const sunsetString = getSunset(currentWeatherMock);
+        const weatherType = getWeatherType(
+            currentWeatherMock.weather[0].main,
+            new Date(),
+            currentWeatherMock.timezone,
+            sunriseString,
+            sunsetString
+        );
+        const currentWeatherIcon = screen.getByTestId('current-weather-'+weatherType);
+        expect(currentWeatherIcon).toBeInTheDocument();
+        await waitFor(() => expect(currentWeatherIcon).toBeVisible(), { timeout: 2000 });
         
         //test if dawn prevision correct
         const dawnPrevision = screen.getByTestId('dawn-prevision');
-        expect(dawnPrevision).toHaveTextContent('27');
+        expect(dawnPrevision).toHaveTextContent(searchNextDayTemperature(hourlyWeatherMock as unknown as HourlyWeatherResponse, 3));
         await waitFor(() => expect(dawnPrevision).toBeVisible(), { timeout: 2000 });
         
         //test if morning prevision correct
         const morningPrevision = screen.getByTestId('morning-prevision');
-        expect(morningPrevision).toHaveTextContent('36');
+        expect(morningPrevision).toHaveTextContent(searchNextDayTemperature(hourlyWeatherMock as unknown as HourlyWeatherResponse, 9));
         await waitFor(() => expect(morningPrevision).toBeVisible(), { timeout: 2000 });
         
-
         //test if afternoon prevision correct
         const afternoonPrevision = screen.getByTestId('afternoon-prevision');
-        expect(afternoonPrevision).toHaveTextContent('35');
+        expect(afternoonPrevision).toHaveTextContent(searchNextDayTemperature(hourlyWeatherMock as unknown as HourlyWeatherResponse, 15));
         await waitFor(() => expect(afternoonPrevision).toBeVisible(), { timeout: 2000 });
-        
         
         //test if night prevision correct
         const nightPrevision = screen.getByTestId('night-prevision');
-        expect(nightPrevision).toHaveTextContent('31');
+        expect(nightPrevision).toHaveTextContent(searchNextDayTemperature(hourlyWeatherMock as unknown as HourlyWeatherResponse, 21));
         await waitFor(() => expect(nightPrevision).toBeVisible(), { timeout: 2000 });
         
     });

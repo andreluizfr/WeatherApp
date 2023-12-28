@@ -10,6 +10,14 @@
   background: linear-gradient(rgb(69, 79, 97), rgb(49, 60, 87));
 }
 
+.WeatherPage[weather=snowy] {
+  background: linear-gradient(rgb(224, 224, 224), rgb(165, 165, 165));
+}
+
+.WeatherPage[weather=fog] {
+  background: linear-gradient(rgb(177, 198, 236), rgb(160, 172, 202));
+}
+
 .WeatherPage[weather=sunny] .Icon, .WeatherPage[weather=rainy] .Icon, .WeatherPage[weather=cloudy-day] .Icon, .WeatherPage[weather=cloudy-night] .Icon, .WeatherPage .Icon {
   color: #ffffff;
 }
@@ -32,35 +40,32 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-.WeatherPage[weather=snowy] {
-  background: linear-gradient(rgb(224, 224, 224), rgb(165, 165, 165));
-}
-.WeatherPage[weather=snowy] .Icon {
+.WeatherPage[weather=snowy] .Icon, .WeatherPage[weather=fog] .Icon {
   color: #000000;
 }
-.WeatherPage[weather=snowy] .Icon:hover {
+.WeatherPage[weather=snowy] .Icon:hover, .WeatherPage[weather=fog] .Icon:hover {
   color: rgba(0, 0, 0, 0.8);
 }
-.WeatherPage[weather=snowy] .Icon-bright {
+.WeatherPage[weather=snowy] .Icon-bright, .WeatherPage[weather=fog] .Icon-bright {
   color: rgba(0, 0, 0, 0.8);
 }
-.WeatherPage[weather=snowy] .Icon-brighter {
+.WeatherPage[weather=snowy] .Icon-brighter, .WeatherPage[weather=fog] .Icon-brighter {
   color: rgba(0, 0, 0, 0.5);
 }
-.WeatherPage[weather=snowy] .Text {
+.WeatherPage[weather=snowy] .Text, .WeatherPage[weather=fog] .Text {
   color: #000000;
 }
-.WeatherPage[weather=snowy] .Text-bright {
+.WeatherPage[weather=snowy] .Text-bright, .WeatherPage[weather=fog] .Text-bright {
   color: rgba(0, 0, 0, 0.8);
 }
-.WeatherPage[weather=snowy] .Text-brighter {
+.WeatherPage[weather=snowy] .Text-brighter, .WeatherPage[weather=fog] .Text-brighter {
   color: rgba(0, 0, 0, 0.5);
 }
 
 .WeatherPage {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   min-width: 240px;
@@ -68,34 +73,12 @@
   min-height: 100vh;
   padding: 24px;
 }
-.WeatherPage > .Back-bar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-}
-.WeatherPage > .Back-bar > .Rounded {
-  border-radius: 50%;
-  padding: 4px;
-}
-.WeatherPage > .Back-bar > .Rounded:hover {
-  cursor: pointer;
-  transition: background-color 300ms;
-  background-color: rgba(0, 0, 0, 0.08);
-}
-.WeatherPage > .Back-bar > .Rounded > .Back-icon {
-  width: 32px;
-  height: auto;
-}
-.WeatherPage > .Back-bar > .Rounded > .Back-icon:hover {
-  transition: color 300ms;
-}
 .WeatherPage > .Weather-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 48px 8px;
+  padding: 8px;
   width: 100%;
   max-width: 420px;
 }
@@ -198,6 +181,11 @@
   font-weight: 300;
   letter-spacing: 1px;
 }
+.WeatherPage > .Weather-container > .Previsions .Day-period .Subtitle {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
 .WeatherPage > .Weather-container > .Previsions .Day-period .Weather-icon {
   width: 36px;
   height: auto;
@@ -259,4 +247,10 @@
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.5px;
+}
+.WeatherPage > .CityTime {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  align-self: flex-end;
 }/*# sourceMappingURL=styles.css.map */

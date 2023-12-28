@@ -1,36 +1,39 @@
 import { WeatherType } from "@entities/WeatherType";
+import { getTimezonedDate } from "./getTimezonedDate";
 
-export default function getWeatherType (weather: string, date: Date, timezone?: number): WeatherType {
-    let utcDate = new Date(date);
-    utcDate.setTime(utcDate.getTime() + (timezone?(timezone*1000):0)); //acrescentar timezone da região
-    if(timezone){
-        utcDate = new Date(utcDate.getTime() + (utcDate.getTimezoneOffset() * 60000)); //acrescentar timezone -03:00 do brasil ou de qualquer outro sistema que irá rodar
-        console.log("dateTime in the city: " + utcDate.toLocaleString()); //só pra confirmar a conversão de horários
-    }
+export default function getWeatherType (weather: string, date: Date, timezone: number | null, sunriseString: string, sunsetString: string): WeatherType {
 
-    if (weather === "Clear" && isNight(utcDate)) return "starry";
-    if (weather === "Clear" && isDay(utcDate)) return "sunny";
-    if (weather === "Clouds" && isNight(utcDate)) return "cloudy-night";
-    if (weather === "Clouds" && isDay(utcDate)) return "cloudy-day";
+    if(timezone !== null) 
+        date = getTimezonedDate(date, timezone); 
+
+    const sunrise = setDateHoursFromString(date, sunriseString);
+    const sunset = setDateHoursFromString(date, sunsetString);
+
+    if (weather === "Clear" && isNight(date, sunrise, sunset)) return "starry";
+    if (weather === "Clear" && isDay(date, sunrise, sunset)) return "sunny";
+    if (weather === "Clouds" && isNight(date, sunrise, sunset)) return "cloudy-night";
+    if (weather === "Clouds" && isDay(date, sunrise, sunset)) return "cloudy-day";
     if (weather === "Rain" || weather === "Drizzle") return "rainy";
     if (weather === "Thunderstorm") return "thundery";
-    if (weather === "Snow") return "snowy";
+    if (weather === "Fog") return "fog";
     if (weather === "Snow") return "snowy";
 
     return "unknown";
 }
 
-//já que foi pedido que dawn, morning, afternoon e night fossem 3, 9, 15, 21
-//as definiçoes de dia e noite foram feitas com as horas 6 e 18 pra simplificar
-//o ideal seria fazer as checagens com as horas de sunrise e sunset de cada local
-
-function isNight(date: Date) {
-    if(date.getHours() < 6 || date.getHours() > 18) return true; 
+function isNight(date: Date, sunrise: Date, sunset: Date) {
+    if(date.getTime() < sunrise.getTime() || date.getTime() > sunset.getTime()) return true; 
     return false;
 }
 
-function isDay(date: Date) {
-    if(date.getHours() >= 6 || date.getHours() <= 18) return true;
+function isDay(date: Date, sunrise: Date, sunset: Date) {
+    if(date.getHours() >= sunrise.getTime() || date.getHours() <= sunset.getTime()) return true;
     return false;
+}
+
+function setDateHoursFromString(date: Date, hoursString: string) { //a hora chega no formato 05:45
+    const newDate = new Date(date);
+    newDate.setHours(Number(hoursString.slice(0,2)), Number(hoursString.slice(3,5)), 0);
+    return newDate;
 }
 

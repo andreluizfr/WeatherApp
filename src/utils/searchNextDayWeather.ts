@@ -1,21 +1,24 @@
 import HourlyWeatherResponse from "@entities/HourlyWeatherResponse";
 import getWeatherType from "./getWeatherType";
 
-export default function searchNextDayWeather(response: HourlyWeatherResponse, hours: number) {
+export default function searchNextDayWeather(response: HourlyWeatherResponse, hours: number, sunrise: string, sunset: string) {
+
+    if(response == undefined) return "unknown";
 
     const nextDay = new Date();
 
     nextDay.setTime(nextDay.getTime() + 86400000); //next day
     nextDay.setHours(hours, 0, 0);
     
-    const dateHoursString = nextDay.toLocaleTimeString();
-    const nextDayString = nextDay.getFullYear() + "-" 
-        + (((nextDay.getMonth()+1)<10) ? "0"+(nextDay.getMonth()+1) : (nextDay.getMonth()+1)) + "-"
-        + ((nextDay.getDate()<10) ? "0"+nextDay.getDate() : nextDay.getDate()) + " "
-        + dateHoursString;
+    const formatedDateTxt = formatDate(nextDay);
 
-    if(response == undefined) return "unknown";
+    const hourlyWeatherResponse = response.list.find(data => data.dt_txt === formatedDateTxt);
 
-    const weather = response.list.filter(data => data.dt_txt === nextDayString)[0]?.weather[0].main;
-    return getWeatherType(weather, nextDay);
+    const weather = hourlyWeatherResponse ? hourlyWeatherResponse.weather[0].main : "";
+
+    return getWeatherType(weather, nextDay, null, sunrise, sunset);
+}
+
+function formatDate (date: Date) {
+    return date.toISOString().slice(0,10) + " " + date.toLocaleTimeString(); //deixa data no formato 2023-09-12 03:00:00
 }

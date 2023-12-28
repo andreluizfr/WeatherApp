@@ -1,1 +1,42 @@
-/*# sourceMappingURL=styles.css.map */
+.NotFoundPage .Icon {
+  color: #ffffff;
+}
+
+.NotFoundPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-width: 240px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 24px;
+}
+.NotFoundPage > .Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  flex: 1;
+}
+.NotFoundPage > .Container > .Sad-face-icon {
+  width: 128px;
+  height: auto;
+  color: #ffffff;
+}
+.NotFoundPage > .Container > .Title {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.NotFoundPage > .Container > .Subtitle {
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: #ffffff;
+}/*# sourceMappingURL=styles.css.map */

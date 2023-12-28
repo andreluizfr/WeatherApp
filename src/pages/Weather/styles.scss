@@ -13,7 +13,16 @@
     background: linear-gradient(rgb(69, 79, 97), rgb(49, 60, 87));
 }
 
+.WeatherPage[weather="snowy"]{
+    background: linear-gradient(rgb(224, 224, 224), rgb(165, 165, 165));
+}
+
+.WeatherPage[weather="fog"]{
+    background: linear-gradient(rgb(177, 198, 236), rgb(160, 172, 202));
+}
+
 .WeatherPage[weather="sunny"], .WeatherPage[weather="rainy"], .WeatherPage[weather="cloudy-day"], .WeatherPage[weather="cloudy-night"], .WeatherPage{
+    
     .Icon{
         color: #ffffff;
 
@@ -39,8 +48,7 @@
     }
 }
 
-.WeatherPage[weather="snowy"]{
-    background: linear-gradient(rgb(224, 224, 224), rgb(165, 165, 165));
+.WeatherPage[weather="snowy"], .WeatherPage[weather="fog"]{
 
     .Icon{
         color: #000000;
@@ -70,7 +78,7 @@
 .WeatherPage{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 
     width: 100%;
@@ -79,40 +87,12 @@
     min-height: 100vh;
     padding: 24px;
 
-    > .Back-bar{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-
-        > .Rounded{
-            border-radius: 50%;
-            padding: 4px;
-
-            &:hover{
-                cursor: pointer;
-                transition: background-color 300ms;
-                background-color: rgba(0,0,0,0.08);
-            }
-
-            > .Back-icon{
-                width: 32px;
-                height: auto;
-    
-                &:hover{
-                    transition: color 300ms;
-                }
-            }
-        }
-        
-    }
-
     > .Weather-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 48px 8px;
+        padding: 8px;
         width: 100%;
         max-width: 420px;
 
@@ -230,6 +210,12 @@
                     letter-spacing: 1px;
                 }
 
+                .Subtitle{
+                    font-size: 12px;
+                    font-weight: 300;
+                    letter-spacing: 0.5px;
+                }
+
                 .Weather-icon{
                     width: 36px;
                     height: auto;
@@ -301,5 +287,12 @@
                 }
             }
         }   
+    }
+
+    > .CityTime{
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        align-self: flex-end;
     }
 }

@@ -1,0 +1,22 @@
+.Back-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.Back-bar > .Rounded {
+  border-radius: 50%;
+  padding: 4px;
+}
+.Back-bar > .Rounded:hover {
+  cursor: pointer;
+  transition: background-color 300ms;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.Back-bar > .Rounded > .Back-icon {
+  width: 32px;
+  height: auto;
+}
+.Back-bar > .Rounded > .Back-icon:hover {
+  transition: color 300ms;
+}/*# sourceMappingURL=styles.css.map */
