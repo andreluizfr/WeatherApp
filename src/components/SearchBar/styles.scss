@@ -11,6 +11,9 @@
     align-items: center;
     gap: 4px;
 
+    width: 100%;
+    max-width: 264px;
+
     > .Search-input{
         z-index: 999;
         height: 32px;
@@ -43,7 +46,7 @@
     &[hovered="true"]{
         > .Search-input{
             height: 100%;
-            width: 264px;
+            width: 100%;
             padding-left: 4px;
 
             transition: all 300ms;

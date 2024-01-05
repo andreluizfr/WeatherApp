@@ -89,6 +89,10 @@
     padding: 24px;
     background-color: #151515;
 
+    @include mq-small{
+        padding: 16px;
+    }
+
     > .Weather-container {
         display: flex;
         flex-direction: column;
