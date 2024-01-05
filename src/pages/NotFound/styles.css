@@ -33,6 +33,7 @@
   letter-spacing: 4px;
   color: #ffffff;
   margin-bottom: 16px;
+  text-align: center;
 }
 .NotFoundPage > .Container > .Subtitle {
   font-size: 18px;

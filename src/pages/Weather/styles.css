@@ -95,6 +95,7 @@
   font-size: 34px;
   font-weight: 300;
   letter-spacing: 4px;
+  text-align: center;
 }
 .WeatherPage > .Weather-container > .Title-wrapper .Subtitle {
   font-size: 28px;
