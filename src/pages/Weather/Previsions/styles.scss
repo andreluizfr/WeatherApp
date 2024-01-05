@@ -12,9 +12,14 @@
     flex-wrap: wrap;
     gap: 12px;
 
+    @include mq-small{
+        margin: 24px 0;
+    }
+
     @include mq-very-small{
         justify-content: center;
         gap: 16px;
+        margin: 24px 0;
     }
 
     .Day-period {
