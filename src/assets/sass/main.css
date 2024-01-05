@@ -24,16 +24,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  width: 100%;
-  min-height: 100vh;
-}
-
 #root {
-  display: flex;
-  place-items: center;
-  width: 100%;
-  min-height: 100vh;
   background-color: #242424;
 }
 
