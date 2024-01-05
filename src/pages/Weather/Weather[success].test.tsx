@@ -11,8 +11,8 @@ import WeatherPage from '.';
 
 import HourlyWeatherResponse from '@entities/HourlyWeatherResponse';
 
-import getCurrentWeather from '@services/geturrentWeather';
-import getHourlyWeather from '@services/getourlyWeather';
+import getCurrentWeather from '@services/getCurrentWeather';
+import getHourlyWeather from '@services/getHourlyWeather';
 
 import searchNextDayTemperature from '@utils/searchNextDayTemperature';
 import getSunrise from '@utils/getSunrise';
