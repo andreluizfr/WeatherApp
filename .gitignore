@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 *.css.map
+
+coverage
