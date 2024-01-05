@@ -25,7 +25,7 @@ export default function useWeatherData({currentWeatherResponse, hourlyWeatherRes
                 sunriseString: sunriseString,
                 sunsetString: sunsetString,
                 weather: getWeatherType(
-                    currentWeatherResponse.weather[0].main,
+                    (currentWeatherResponse.weather)[0].main,
                     new Date(),
                     currentWeatherResponse.timezone,
                     sunriseString,
@@ -46,7 +46,9 @@ export default function useWeatherData({currentWeatherResponse, hourlyWeatherRes
                 humidity: currentWeatherResponse.main.humidity,
             }
         }
-        else return null;
+        
+        return null;
+
     }, [currentWeatherResponse, hourlyWeatherResponse]);
 
     return weatherData;

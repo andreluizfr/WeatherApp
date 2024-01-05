@@ -1,37 +1,28 @@
 import HourlyWeatherResponse from "@entities/HourlyWeatherResponse";
-import { IHttpError } from "@entities/IHttpError";
-import { City } from "@entities/City";
-
-import cityPositions from "@data/cityPositions.json";
 
 import { makeHttpClient } from "@factories/makeHttpClient";
 
-import { useEffect, useState } from "react";
+interface HourlyWeatherService {
+    city: string | null,
+    state?: string | null,
+    country?: string | null
+}
 
-
-export default function GetHourlyWeatherService(city: City) {
+export default function getHourlyWeatherService({city, state, country}: HourlyWeatherService) {
     
-    const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState<HourlyWeatherResponse | null>(null);
-    const [error, setError] = useState<IHttpError | null>(null);
-    
-    useEffect(()=>{
- 
-        const httpClient = makeHttpClient<HourlyWeatherResponse>("hourly");
+    const httpClient = makeHttpClient<HourlyWeatherResponse>("hourly");
 
-        const path = "/forecast?lat=" + cityPositions[city].lat
-            + "&lon=" + cityPositions[city].lon
-            + "&appid=" + import.meta.env.VITE_OPEN_WEATHER_KEY;
-        
-        httpClient.get(path)
-            .then(data=>{
-                setIsLoading(false);
-                setData(data);
-            }).catch(error=>{
-                setError(error);
-                setIsLoading(false);
-            });
-    }, []);
+    let path;
 
-    return { isLoading, data, error };
+    if (city){
+        path = "/forecast?q=" + city
+        + (state ? (","+state) : "")
+        + (country ? (","+country) : "")
+        + "&appid=" + import.meta.env.VITE_OPEN_WEATHER_KEY;
+    }
+    else{
+        path="";
+    }
+
+    return httpClient.get(path);
 }

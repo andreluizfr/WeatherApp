@@ -2,7 +2,7 @@ import CurrentWeatherResponse from "@entities/CurrentWeatherResponse";
 import { getTimezonedDate } from "./getTimezonedDate";
 
 export default function getSunset(response: CurrentWeatherResponse) {
-    const localDate = new Date(response.sys.sunrise*1000);
+    const localDate = new Date(response.sys.sunset*1000);
     const utcDate = getTimezonedDate(localDate, response.timezone);
 
     const hours = utcDate.getHours();

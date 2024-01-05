@@ -72,6 +72,7 @@
   overflow: hidden;
   min-height: 100vh;
   padding: 24px;
+  background-color: #151515;
 }
 .WeatherPage > .Weather-container {
   display: flex;

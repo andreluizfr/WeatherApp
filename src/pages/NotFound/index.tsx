@@ -1,8 +1,10 @@
 import './styles.css';
 import { PiSmileySadLight } from "react-icons/pi";
 import BackBar from '@components/BackBar';
+import { lazy } from 'react';
 
-export default function NotFoundPage(): JSX.Element {
+function NotFoundPage(): JSX.Element {
+
     return (
         <div className='NotFoundPage'>
             <BackBar />
@@ -18,3 +20,16 @@ export default function NotFoundPage(): JSX.Element {
         </div>
     );
 }
+
+const waitSomeTime = () => {
+    return new Promise<string>(resolve => {
+        setTimeout(() => {
+            resolve('');
+        }, 1000);
+    });
+};
+  
+const NotFoundPageCointainer = lazy(() => waitSomeTime().then(() => ({ default: () => <NotFoundPage />})));
+
+export default NotFoundPageCointainer;
+  

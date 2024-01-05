@@ -29,5 +29,4 @@ export default function useDateTime ({currentWeatherResponse}: props) {
     }, [dateTime]);
 
     return dateTime;
-
 }

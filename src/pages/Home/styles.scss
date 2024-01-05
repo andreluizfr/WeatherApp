@@ -13,6 +13,17 @@
     min-height: 100vh;
     background-color: #151515;
 
+    > .Search-container{
+        position: absolute;
+        top: 16px;
+        right: 0;
+        left: 0;
+        bottom: auto;
+        margin: auto;
+        height: 32px;
+        width: 300px;
+    }
+
     > .HomePage-container{
         display: flex;
         flex-direction: column;
@@ -21,6 +32,12 @@
         gap: 32px;
         width: 100%;
         max-width: 460px;
+        transition: filter 150ms ease-in;
+
+        &[blur="true"]{
+            filter: blur(3px);
+            transition: filter 300ms ease-in;
+        }
 
         & > .Title-wrapper{
             display: flex;

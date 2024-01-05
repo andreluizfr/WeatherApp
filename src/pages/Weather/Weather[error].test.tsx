@@ -1,59 +1,59 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WeatherPage from '.';
+
 import * as fs from 'fs';
 import * as path from 'path';
 
+import WeatherPage from '.';
+
+import getCurrentWeather from '@services/getCurrentWeather';
+import getHourlyWeather from '@services/getHourlyWeather';
+
+interface WeatherService {
+    city: string | null,
+    state?: string | null,
+    country?: string | null
+}
+
 jest.mock('@services/GetCurrentWeather', () => ({
     __esModule: true,
-    default: (_city: string) => {
-      return {
-        isLoading: false,
-        loaded: false,
-        data: null,
-        isError: true,
-        error: {
-            httpStatusCode: 500,
-            message: "erro qualquer"
-        }
-      };
-    },
+    default: jest.fn((_props: WeatherService) => {
+        return new Promise((_resolve, reject)=>{
+            reject({
+                httpStatusCode: 500,
+                message: "erro qualquer"
+            });
+        });
+    }),
 }));
 
 jest.mock('@services/GetHourlyWeather', () => ({
     __esModule: true,
-    default: (_city: string) => {
-      return {
-        isLoading: false,
-        loaded: false,
-        data: null,
-        isError: true,
-        error: {
-            httpStatusCode: 500,
-            message: "erro qualquer"
-        }
-      };
-    },
+    default: jest.fn((_props: WeatherService) => {
+        return new Promise((_resolve, reject)=>{
+            reject({
+                httpStatusCode: 500,
+                message: "erro qualquer"
+            });
+        });
+    }),
 }));
 
 jest.mock('react-router-dom', () => ({ 
     __esModule: true,
-    useNavigate: () => {
+    useNavigate: jest.fn(() => {
         return (_path: string | number) => {}
-    },
-    useSearchParams: () => {
+    }),
+    useSearchParams: jest.fn(() => {
         const searchParams = {
             get: (_param: string) => {
                 return 'dallol';
             }
         }
         return [searchParams];
-    }
+    })
 }));
 
-beforeEach((): void => {
-    jest.setTimeout(20000);
-});
 
 describe('WeatherPage', () => {
 
@@ -70,31 +70,43 @@ describe('WeatherPage', () => {
         style.innerHTML = cssFile;
         container.append(style);
 
-        const loader = screen.queryByTestId('loader');
-        expect(loader).toBeNull();
+        await act(async () => {
+            expect(getCurrentWeather).toHaveBeenCalledTimes(1);
+            expect(getHourlyWeather).toHaveBeenCalledTimes(1);
+            const error = {
+                httpStatusCode: 500,
+                message: "erro qualquer"
+            };
+            await expect(getCurrentWeather({city: 'Dallol'})).rejects.toEqual(error);
+            await expect(getHourlyWeather({city: 'Dallol'})).rejects.toEqual(error);
+        });
 
-        const backIcon = screen.getByTestId('back-icon');
-        expect(backIcon).toBeInTheDocument();
-        expect(backIcon).toBeVisible();
+        await waitFor(async () => {
+            //it must have header back icon
+            const backIcon = screen.getByTestId('back-icon');
+            expect(backIcon).toBeVisible();
 
-        const pageTitle = screen.getByTestId('page-title');
-        expect(pageTitle).toHaveTextContent('DALLOL');
-        await waitFor(() => expect(expect(pageTitle).toBeVisible()), { timeout: 2000 });
+            //it must have page title equals to the city selected
+            const pageTitle = screen.getByTestId('page-title');
+            expect(pageTitle).toHaveTextContent('DALLOL');
+            expect(pageTitle).toBeVisible();
 
-        const pageSubTitle = screen.getByTestId('page-subtitle');
-        expect(pageSubTitle).toHaveTextContent('unknown');
-        await waitFor(() => expect(expect(pageSubTitle).toBeVisible()), { timeout: 2000 });
+            const pageSubTitle = screen.findByTestId('page-subtitle');
+            expect(pageSubTitle).toHaveTextContent('unknown');
+            expect(pageSubTitle).toBeVisible();
 
-        const errorMessage = screen.getByTestId('error-message');
-        expect(errorMessage).toHaveTextContent('Error, please try again later.');
-        await waitFor(() => expect(expect(errorMessage).toBeVisible()), { timeout: 2000 });
+            const errorMessage = screen.findByTestId('error-message');
+            expect(errorMessage).toHaveTextContent('Error, please try again later.');
+            expect(errorMessage).toBeVisible();
 
-        const previsions = screen.queryByTestId('previsions');
-        expect(previsions).toBeNull();
+            const previsions = screen.queryByTestId('previsions');
+            expect(previsions).toBeNull();
 
-        const moreInfos = screen.queryByTestId('more-infos');
-        expect(moreInfos).toBeNull();
+            const moreInfos = screen.queryByTestId('more-infos');
+            expect(moreInfos).toBeNull();
 
-    });
+        }, { timeout: 10000 });
+
+    }, 15000);
 
 });
