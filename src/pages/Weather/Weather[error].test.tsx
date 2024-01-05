@@ -6,8 +6,8 @@ import * as path from 'path';
 
 import WeatherPage from '.';
 
-import getCurrentWeather from '@services/getCurrentWeather';
-import getHourlyWeather from '@services/getHourlyWeather';
+import getCurrentWeather from '@services/geturrentWeather';
+import getHourlyWeather from '@services/getourlyWeather';
 
 interface WeatherService {
     city: string | null,

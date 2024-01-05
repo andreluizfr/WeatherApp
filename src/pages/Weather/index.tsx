@@ -14,8 +14,8 @@ import WeatherIcon from '@components/WeatherIcon';
 import useWeatherData from '@hooks/useWeatherData';
 import useDateTime from '@hooks/useDateTime';
 
-import getCurrentWeather from '@services/getCurrentWeather';
-import getHourlyWeather from '@services/getHourlyWeather';
+import getCurrentWeather from '@services/geturrentWeather';
+import getHourlyWeather from '@services/getourlyWeather';
 
 import rewriteWeatherType from '@utils/rewriteWeatherType';
 
