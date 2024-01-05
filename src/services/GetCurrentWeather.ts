@@ -8,7 +8,7 @@ interface CurrentWeatherService {
     country?: string | null
 }
 
-export default function getCurrentWeatherService({city, state, country}: CurrentWeatherService) {
+export default function getCurrentWeather({city, state, country}: CurrentWeatherService) {
 
     const httpClient = makeHttpClient<CurrentWeatherResponse>("current");
 

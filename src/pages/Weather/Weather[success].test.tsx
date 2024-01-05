@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import * as fs from 'fs';
@@ -11,8 +11,8 @@ import WeatherPage from '.';
 
 import HourlyWeatherResponse from '@entities/HourlyWeatherResponse';
 
-//import getCurrentWeather from '@services/getCurrentWeather';
-//import getHourlyWeather from '@services/getHourlyWeather';
+import getCurrentWeather from '@services/getCurrentWeather';
+import getHourlyWeather from '@services/getHourlyWeather';
 
 import searchNextDayTemperature from '@utils/searchNextDayTemperature';
 import getSunrise from '@utils/getSunrise';
@@ -74,14 +74,12 @@ describe('WeatherPage', () => {
         style.innerHTML = cssFile;
         container.append(style);
         
-        /*
         await act(async () => {
             expect(getCurrentWeather).toHaveBeenCalledTimes(1);
             expect(getHourlyWeather).toHaveBeenCalledTimes(1);
             await expect(getCurrentWeather({city: 'Dallol'})).resolves.toEqual(currentWeatherMock);
             await expect(getHourlyWeather({city: 'Dallol'})).resolves.toEqual(hourlyWeatherMock);
         });
-        */
 
         await waitFor(async () => {
             //it must have header back icon

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import * as fs from 'fs';
@@ -6,8 +6,8 @@ import * as path from 'path';
 
 import WeatherPage from '.';
 
-//import getCurrentWeather from '@services/getCurrentWeather';
-//import getHourlyWeather from '@services/getHourlyWeather';
+import getCurrentWeather from '@services/getCurrentWeather';
+import getHourlyWeather from '@services/getHourlyWeather';
 
 interface WeatherService {
     city: string | null,
@@ -69,8 +69,7 @@ describe('WeatherPage', () => {
         style.type = 'text/css'; 
         style.innerHTML = cssFile;
         container.append(style);
-
-        /*
+            
         await act(async () => {
             expect(getCurrentWeather).toHaveBeenCalledTimes(1);
             expect(getHourlyWeather).toHaveBeenCalledTimes(1);
@@ -81,7 +80,6 @@ describe('WeatherPage', () => {
             await expect(getCurrentWeather({city: 'Dallol'})).rejects.toEqual(error);
             await expect(getHourlyWeather({city: 'Dallol'})).rejects.toEqual(error);
         });
-        */
 
         await waitFor(async () => {
             //it must have header back icon

@@ -8,7 +8,7 @@ interface HourlyWeatherService {
     country?: string | null
 }
 
-export default function getHourlyWeatherService({city, state, country}: HourlyWeatherService) {
+export default function getHourlyWeather({city, state, country}: HourlyWeatherService) {
     
     const httpClient = makeHttpClient<HourlyWeatherResponse>("hourly");
 
