@@ -26,7 +26,7 @@ interface WeatherService {
     country?: string | null
 }
 
-jest.mock('@services/GetCurrentWeather', () => ({
+jest.mock('@services/getCurrentWeather', () => ({
     __esModule: true,
     default: jest.fn((_props: WeatherService) => {
         return new Promise(resolve=>{
@@ -35,7 +35,7 @@ jest.mock('@services/GetCurrentWeather', () => ({
     }),
 }));
 
-jest.mock('@services/GetHourlyWeather', () => ({
+jest.mock('@services/getHourlyWeather', () => ({
     __esModule: true,
     default: jest.fn((_props: WeatherService) => {
         return new Promise(resolve=>{
