@@ -34,12 +34,12 @@ export default function SearchBar({searchOnFocus, setSearchOnFocus}: props): JSX
     const [inputValue, setInputValue] = useState("");
 
     function processCityString(str: string) {
-        const splitedString = str.split(',');
+        const splitedString = str.split(/[,.;]+/g);
         const obj = {} as ProcessedCity;
 
-        obj.city = splitedString[0].replace(' ', '');
-        obj.state = splitedString[1] ? splitedString[1].replace(' ', '') : null;
-        obj.country = splitedString[2] ? splitedString[2].replace(' ', '') : null;
+        obj.city = splitedString[0].trim().replace(/[\s+]+/g, '+');
+        obj.state = splitedString[1] ? splitedString[1].trim().replace(/[\s+]+/g, '+') : null;
+        obj.country = splitedString[2] ? splitedString[2].trim().replace(/[\s+]+/g, '+') : null;
 
         return obj;
     }
